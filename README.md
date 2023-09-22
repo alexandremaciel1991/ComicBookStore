@@ -26,6 +26,8 @@ yarn dev
 - Criar formato de carrinho
 - Adicionar cookie no carrinho
 - Criar um footer
-- Melhorar/Criar componentes reetilizaveis
+- Melhorar/Criar componentes reutilizaveis
 - Criar Metodo de Login
 - BFF (Maybe)
+- Criar Docker
+- Criar paginas 404 e 500
