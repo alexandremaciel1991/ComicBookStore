@@ -2,6 +2,7 @@ import {
   Button,
   BuyButton,
   CardAction,
+  CardActionButtonGroup,
   CardContainer,
   Price,
   ProductDetails,
@@ -11,7 +12,7 @@ import {
 } from "./styles";
 import Image from "next/image";
 import { useFormatPrice } from "@/hooks/useFormatPrice";
-import { ButtonGroup } from "@mui/material";
+import { ButtonGroup, useMediaQuery } from "@mui/material";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 interface ICardDetails {
   id: number;
@@ -24,28 +25,38 @@ export const CardDetails = ({ id, title, price, thumbnail }: ICardDetails) => {
   const handleClick = () => {
     window.location.href = `/produto?id=${id}`;
   };
+  const matches = useMediaQuery("(max-width:900px)");
   return (
     <CardContainer>
       <ProductDetails onClick={handleClick}>
         <ProductImage>
           <Image src={thumbnail} alt="capa" fill />
         </ProductImage>
-        <TitleContent>
-          <Text variant="body2" align="center">
-            {title}
-          </Text>
-        </TitleContent>
+        {!matches && (
+          <TitleContent>
+            <Text variant="body2" align="center">
+              {title}
+            </Text>
+          </TitleContent>
+        )}
       </ProductDetails>
       <CardAction>
+        {matches && (
+          <TitleContent onClick={handleClick}>
+            <Text variant="body2" align="center">
+              {title}
+            </Text>
+          </TitleContent>
+        )}
         <Price variant="body2" align="center">
           {formatPrice}
         </Price>
-        <ButtonGroup>
+        <CardActionButtonGroup>
           <Button href={`/produto?id=${id}`}>Detalhes</Button>
           <BuyButton href="/">
             <LocalMallOutlinedIcon fontSize="large" />
           </BuyButton>
-        </ButtonGroup>
+        </CardActionButtonGroup>
       </CardAction>
     </CardContainer>
   );

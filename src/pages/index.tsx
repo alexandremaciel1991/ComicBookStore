@@ -6,6 +6,7 @@ import { Loading } from "@/components/Loading";
 import { PaginationResult } from "@/components/Pagination/PaginationResult";
 import { getComicsList } from "@/services/ListProductCard";
 import { ComicTypes } from "@/types/ComicType";
+import { useMediaQuery } from "@mui/material";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
@@ -29,9 +30,11 @@ export default function Home({
 }: IHOME) {
   const breadcrumbs = ["Home"];
   const [loading, setLoading] = useState<boolean>(loadingStatus);
+  const matches = useMediaQuery("(max-width:900px)");
   return (
     <>
-      <TopAppBar /> <Banner /> <BasicBreadcrumbs breadcrumbs={breadcrumbs} />
+      <TopAppBar /> {!matches && <Banner />}{" "}
+      <BasicBreadcrumbs breadcrumbs={breadcrumbs} />
       {!loading ? (
         <>
           <PaginationResult

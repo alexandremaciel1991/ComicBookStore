@@ -10,6 +10,12 @@ export const ImageDetails = styled.div`
   & > img {
     height: 40rem;
   }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    height: 30rem;
+    & > img {
+      height: 30rem;
+    }
+  }
 `;
 
 export const ShowImage = styled(Image)`

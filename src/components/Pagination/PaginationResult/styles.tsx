@@ -14,6 +14,12 @@ export const SearchResultContainer = styled.div<{ $showItens?: boolean }>`
   padding: 1rem;
   align-items: center;
   ${({ theme }) => theme.typography.body1}
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 100%;
+    padding: 0;
+    height: 100%;
+    margin: 1rem auto;
+  }
 `;
 export const PaginationControlledStyle = styled(PaginationControlled)`
   ${({ theme }) => theme.typography.h1}

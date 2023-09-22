@@ -5,4 +5,7 @@ export const CardContainer = styled.div`
   margin: 2rem auto;
   display: flex;
   flex-wrap: wrap;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    max-width: 100%;
+  }
 `;

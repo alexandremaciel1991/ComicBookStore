@@ -21,7 +21,7 @@ declare module "@mui/material/styles/createTypography" {
     button1: TypographyStyleOptions | undefined;
   }
 }
-
+let t = createTheme();
 const theme = createTheme({
   palette: {
     primary: {
@@ -78,6 +78,9 @@ const theme = createTheme({
     button: {
       fontSize: "1.5rem",
       fontWeight: 700,
+      [t.breakpoints.down("md")]: {
+        fontSize: "1.3rem",
+      },
     },
 
     button1: {

@@ -11,6 +11,10 @@ export const SearchContainer = styled.div`
   margin-left: 2rem;
   height: 4rem;
   width: 73rem;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 30rem;
+    margin: 1rem 0;
+  }
 `;
 
 export const SearchIconWrapper = styled.div`

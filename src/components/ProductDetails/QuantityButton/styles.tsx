@@ -1,6 +1,11 @@
 import styled from "styled-components";
-import { Button, TextField } from "@mui/material";
+import { Button, ButtonGroup, TextField } from "@mui/material";
 
+export const ButtonGroupStyle = styled(ButtonGroup)`
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    order: 2;
+  }
+`;
 export const ButtonController = styled(Button)`
   color: ${({ theme }) => theme.palette.text.primary};
   border: 1px solid ${({ theme }) => theme.palette.secondary.main};

@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { ButtonGroup, Card, CardContent, Typography } from "@mui/material";
 import styled from "styled-components";
 
 export const CardContainer = styled(Card)`
@@ -8,6 +8,13 @@ export const CardContainer = styled(Card)`
   margin: 1rem;
   display: flex;
   flex-direction: column;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 36rem;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+  }
 `;
 export const ProductDetails = styled.div`
   cursor: pointer;
@@ -48,6 +55,10 @@ export const Button = styled.a`
   &:hover {
     background-color: ${({ theme }) => theme.palette.secondary.light};
   }
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    margin: 1rem auto;
+  }
 `;
 
 export const BuyButton = styled(Button)`
@@ -64,4 +75,13 @@ export const BuyButton = styled(Button)`
 export const CardAction = styled.div`
   display: flex;
   flex-direction: column;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 15rem;
+  }
+`;
+
+export const CardActionButtonGroup = styled(ButtonGroup)`
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    flex-direction: column;
+  }
 `;

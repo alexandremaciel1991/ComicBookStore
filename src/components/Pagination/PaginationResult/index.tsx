@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@mui/material";
 import {
   PaginationControlledStyle,
   SearchResultContainer,
@@ -21,15 +22,18 @@ export const PaginationResult = ({
   page,
   setLoading,
 }: IPaginationResult) => {
+  const matches = useMediaQuery("(max-width:900px)");
   return (
     <SearchResultContainer $showItens={showTotalItens}>
-      <PaginationControlledStyle
-        totalItens={totalItens}
-        offset={offset}
-        count={count}
-        page={page}
-        setLoading={setLoading}
-      />
+      {(!matches || !showTotalItens) && (
+        <PaginationControlledStyle
+          totalItens={totalItens}
+          offset={offset}
+          count={count}
+          page={page}
+          setLoading={setLoading}
+        />
+      )}
       {showTotalItens && (
         <Text variant="body2">
           <strong> Total de Itens:</strong> {totalItens}

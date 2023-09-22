@@ -7,6 +7,10 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: nowrap;
   position: relative;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 100%;
+    margin: 1rem auto;
+  }
 `;
 
 export const ComicContainer = styled.div`
@@ -16,6 +20,10 @@ export const ComicContainer = styled.div`
   align-content: flex-start;
   position: relative;
   max-width: 80.5rem;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 30rem;
+    margin: 1rem auto;
+  }
 `;
 export const Title = styled(Typography)`
   ${({ theme }) => theme.typography.h2}
@@ -46,6 +54,9 @@ export const SeeMore = styled(Button)`
   &:hover {
     background-color: ${({ theme }) => theme.palette.secondary.light};
   }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 100%;
+  }
 `;
 
 export const PurchaseButton = styled(Button)`
@@ -62,5 +73,8 @@ export const PurchaseButton = styled(Button)`
     background-color: ${({ theme }) => theme.palette.white};
     color: ${({ theme }) => theme.palette.success.main};
     border: 1px solid ${({ theme }) => theme.palette.success.main};
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    order: 3;
   }
 `;

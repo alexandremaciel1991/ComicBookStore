@@ -5,6 +5,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 1450px;
   margin: 2rem auto;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 100%;
+  }
 `;
 
 export const ComicPurchase = styled.div`
@@ -13,6 +16,9 @@ export const ComicPurchase = styled.div`
   display: flex;
   flex-wrap: nowrap;
   position: relative;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    flex-direction: column;
+  }
 `;
 export const PurchaseCard = styled.div`
   width: 33rem;
@@ -23,10 +29,17 @@ export const PurchaseCard = styled.div`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;
 
 export const Price = styled(Typography)`
   ${({ theme }) => theme.typography.h2};
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    order: 1;
+  }
 `;
 
 export const ImageCreator = styled(Image)`

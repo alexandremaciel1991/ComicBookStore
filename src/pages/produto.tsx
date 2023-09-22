@@ -5,6 +5,7 @@ import { Product } from "@/components/ProductDetails/Product";
 import { getComicDetails, getCreators } from "@/services/ProductService";
 import { ComicTypes } from "@/types/ComicType";
 import { CreatorType } from "@/types/CreatorType";
+import { useMediaQuery } from "@mui/material";
 import { GetServerSideProps } from "next";
 
 interface IProduto {
@@ -13,10 +14,10 @@ interface IProduto {
 }
 export default function Produto({ data, creators }: IProduto) {
   const breadcrumbs = ["Home", "Detalhes"];
-
+  const matches = useMediaQuery("(max-width:900px)");
   return (
     <>
-      <TopAppBar /> <Banner />
+      <TopAppBar /> {!matches && <Banner />}
       <BasicBreadcrumbs breadcrumbs={breadcrumbs} />
       <Product product={data} creators={creators} />
     </>
