@@ -8,6 +8,9 @@ export const Container = styled.div`
   ${({ theme }) => theme.breakpoints.down("md")} {
     width: 100%;
   }
+  ${({ theme }) => theme.breakpoints.down("xl")} {
+    max-width: 100%;
+  }
 `;
 
 export const ComicPurchase = styled.div`

@@ -7,13 +7,17 @@ import {
 } from "./styles";
 import { useFormatPrice } from "@/hooks/useFormatPrice";
 import { ComicPurchaseDescription } from "../ComicPurchaseDescription";
-import { QuantityButton } from "../QuantityButton";
+import { QuantityButton } from "../../shared/QuantityButton";
 import { PurchaseButton } from "../ComicPurchaseDescription/styles";
 import { ComicTypes } from "@/types/ComicType";
 import { ImageSlide } from "../ImageGallery";
 import { CreatorType } from "@/types/CreatorType";
 import { GeneralCollapse } from "../GeneralCollapse";
 import { TableDetails } from "@/components/ProductDetails/TableDetails";
+import { useDispatch } from "react-redux";
+import { addComicToCart } from "@/redux/slice";
+import { useRouter } from "next/router";
+import { useFormatUrlImg } from "@/hooks/useFormatUrlImg";
 
 interface IProduct {
   product: ComicTypes;
@@ -24,7 +28,23 @@ export const Product = ({ product, creators }: IProduct) => {
   const formatUrlImage = (extension: string, path: string) => {
     return path + "." + extension;
   };
-
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const thumbnail = useFormatUrlImg(
+    product.thumbnail.path,
+    product.thumbnail.extension
+  );
+  const shoppingComic = () => {
+    dispatch(
+      addComicToCart({
+        id: product.id,
+        title: product.title,
+        price: product.prices[0].price,
+        thumbnail: thumbnail,
+      })
+    );
+    router.push("/checkout");
+  };
   return (
     <Container>
       <ComicPurchase>
@@ -34,11 +54,11 @@ export const Product = ({ product, creators }: IProduct) => {
           description={product.description}
         >
           <PurchaseCard>
-            <QuantityButton />
+            <QuantityButton id={product.id} />
             <Price variant="body2" align="center">
               {formatPrice}
             </Price>
-            <PurchaseButton>Comprar</PurchaseButton>
+            <PurchaseButton onClick={shoppingComic}>Comprar</PurchaseButton>
           </PurchaseCard>
         </ComicPurchaseDescription>
       </ComicPurchase>

@@ -62,6 +62,7 @@ export const Button = styled.a`
 `;
 
 export const BuyButton = styled(Button)`
+  cursor: pointer;
   color: ${({ theme }) => theme.palette.white};
   border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   background-color: ${({ theme }) => theme.palette.success.main};

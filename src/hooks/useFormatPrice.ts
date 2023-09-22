@@ -1,7 +1,6 @@
+import { formatPriceFunction } from "@/utils/formatPrice";
+
 export function useFormatPrice(price: number) {
-  const formatPrice = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(price);
+  const formatPrice = formatPriceFunction(price);
   return formatPrice;
 }

@@ -1,4 +1,4 @@
-export function useFormatPrice(url: string, extension: string) {
+export function useFormatUrlImg(url: string, extension: string) {
   const img = url + "." + extension;
   return img;
 }

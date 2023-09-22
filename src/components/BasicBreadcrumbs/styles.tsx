@@ -4,4 +4,7 @@ export const Container = styled.div`
   height: 20px;
   position: relative;
   margin: 0 auto;
+  ${({ theme }) => theme.breakpoints.down("xl")} {
+    max-width: 100%;
+  }
 `;

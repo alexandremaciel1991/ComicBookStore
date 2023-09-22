@@ -8,7 +8,7 @@ import { getComicsList } from "@/services/ListProductCard";
 import { ComicTypes } from "@/types/ComicType";
 import { useMediaQuery } from "@mui/material";
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface IHOME {
   total: number;
@@ -33,7 +33,7 @@ export default function Home({
   const matches = useMediaQuery("(max-width:900px)");
   return (
     <>
-      <TopAppBar /> {!matches && <Banner />}{" "}
+      <TopAppBar /> {!matches && <Banner />}
       <BasicBreadcrumbs breadcrumbs={breadcrumbs} />
       {!loading ? (
         <>

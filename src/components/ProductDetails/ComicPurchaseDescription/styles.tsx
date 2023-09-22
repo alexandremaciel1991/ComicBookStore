@@ -11,6 +11,9 @@ export const Container = styled.div`
     width: 100%;
     margin: 1rem auto;
   }
+  ${({ theme }) => theme.breakpoints.down("xl")} {
+    max-width: 100%;
+  }
 `;
 
 export const ComicContainer = styled.div`

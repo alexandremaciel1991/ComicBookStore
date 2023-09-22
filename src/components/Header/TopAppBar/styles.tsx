@@ -31,4 +31,7 @@ export const ToolbarStyle = styled(Toolbar)`
     display: flex;
     flex-direction: column;
   }
+  ${({ theme }) => theme.breakpoints.down("xl")} {
+    max-width: 100%;
+  }
 `;

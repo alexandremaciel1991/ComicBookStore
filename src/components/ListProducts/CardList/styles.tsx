@@ -8,4 +8,7 @@ export const CardContainer = styled.div`
   ${({ theme }) => theme.breakpoints.down("md")} {
     max-width: 100%;
   }
+  ${({ theme }) => theme.breakpoints.down("xl")} {
+    max-width: 100%;
+  }
 `;
