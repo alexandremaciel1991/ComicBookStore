@@ -24,6 +24,7 @@ export const ProductSelect = () => {
   const { comics } = useSelector(
     (rootReducer: any) => rootReducer.comicReducer
   );
+
   return (
     <Container>
       <TableContainer component={Paper}>

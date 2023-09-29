@@ -15,10 +15,12 @@ declare module "@mui/material/styles/createPalette" {
 declare module "@mui/material/styles/createTypography" {
   interface Typography {
     button1: TypographyStyleOptions | undefined;
+    cart: TypographyStyleOptions | undefined;
   }
 
   interface TypographyOptions {
     button1: TypographyStyleOptions | undefined;
+    cart: TypographyStyleOptions | undefined;
   }
 }
 let t = createTheme();
@@ -65,7 +67,6 @@ const theme = createTheme({
     h6: {
       fontWeight: 500,
     },
-
     body1: {
       fontSize: "1.8rem",
       fontWeight: 700,
@@ -74,7 +75,11 @@ const theme = createTheme({
       fontSize: "1.5rem",
       fontWeight: 500,
     },
-
+    cart: {
+      fontSize: "1.5rem",
+      fontWeight: 700,
+      lineHeight: "0.6rem",
+    },
     button: {
       fontSize: "1.5rem",
       fontWeight: 700,

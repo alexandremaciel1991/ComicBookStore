@@ -1,9 +1,16 @@
 import { useMediaQuery } from "@mui/material";
-import { AppBarStyle, BoxStyle, MobileTop, ToolbarStyle } from "./styles";
+import {
+  AppBarStyle,
+  BoxStyle,
+  MobileTop,
+  ToolbarStyle,
+  UserContainer,
+} from "./styles";
 import { Logo } from "@/components/Header/Logo";
 import { Search } from "../Search";
 import { Profile } from "../Profile";
 import { useState, useEffect } from "react";
+import { HeaderCart } from "../Cart";
 
 export const TopAppBar = () => {
   const matches = useMediaQuery("(max-width:900px)");
@@ -34,6 +41,7 @@ export const TopAppBar = () => {
             <>
               <MobileTop>
                 <Logo />
+                <HeaderCart />
                 <Profile />
               </MobileTop>
               {isVisible && <Search />}
@@ -42,7 +50,10 @@ export const TopAppBar = () => {
             <>
               <Logo />
               <Search />
-              <Profile />
+              <UserContainer>
+                <HeaderCart />
+                <Profile />
+              </UserContainer>
             </>
           )}
         </ToolbarStyle>

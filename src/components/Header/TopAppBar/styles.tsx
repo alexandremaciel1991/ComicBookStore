@@ -35,3 +35,8 @@ export const ToolbarStyle = styled(Toolbar)`
     max-width: 100%;
   }
 `;
+
+export const UserContainer = styled(Toolbar)`
+  display: flex;
+  float: right;
+`;

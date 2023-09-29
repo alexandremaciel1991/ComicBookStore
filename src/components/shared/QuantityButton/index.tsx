@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { ComicTypesCart } from "@/types/CartType";
 
 interface IQuantityButton {
   id: number;
@@ -36,8 +37,18 @@ export const QuantityButton = ({ id }: IQuantityButton) => {
   };
 
   useEffect(() => {
-    if (comics[0] && comics[0].quantity) {
-      setCount(comics[0].quantity);
+    const comicExistInCart = comics.some(
+      (comic: ComicTypesCart) => comic.id === id
+    );
+
+    if (comicExistInCart) {
+      comics.map((comic: ComicTypesCart) => {
+        if (comic.id === id) {
+          setCount(comic.quantity);
+        }
+      });
+    } else {
+      setCount(1);
     }
   }, []);
 

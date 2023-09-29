@@ -33,7 +33,6 @@ export const CardDetails = ({ id, title, price, thumbnail }: ICardDetails) => {
   const router = useRouter();
   const shoppingComic = () => {
     dispatch(addComicToCart({ id, title, price, thumbnail, quantity: 1 }));
-    router.push("/checkout");
   };
 
   const matches = useMediaQuery("(max-width:900px)");
