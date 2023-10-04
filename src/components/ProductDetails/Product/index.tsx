@@ -16,19 +16,19 @@ import { GeneralCollapse } from "../GeneralCollapse";
 import { TableDetails } from "@/components/ProductDetails/TableDetails";
 import { useDispatch } from "react-redux";
 import { addComicToCart } from "@/redux/slice";
-import { useRouter } from "next/router";
 import { useFormatUrlImg } from "@/hooks/useFormatUrlImg";
+import { useState } from "react";
 
 interface IProduct {
   product: ComicTypes;
   creators: CreatorType[];
 }
 export const Product = ({ product, creators }: IProduct) => {
+  const [productQuantity, setProductQuantity] = useState<number>(1);
   const formatPrice = useFormatPrice(product.prices[0].price);
   const formatUrlImage = (extension: string, path: string) => {
     return path + "." + extension;
   };
-  const router = useRouter();
   const dispatch = useDispatch();
   const thumbnail = useFormatUrlImg(
     product.thumbnail.path,
@@ -41,9 +41,9 @@ export const Product = ({ product, creators }: IProduct) => {
         title: product.title,
         price: product.prices[0].price,
         thumbnail: thumbnail,
+        quantity: productQuantity,
       })
     );
-    router.push("/checkout");
   };
   return (
     <Container>
@@ -54,7 +54,10 @@ export const Product = ({ product, creators }: IProduct) => {
           description={product.description}
         >
           <PurchaseCard>
-            <QuantityButton id={product.id} />
+            <QuantityButton
+              id={product.id}
+              setProductQuantity={setProductQuantity}
+            />
             <Price variant="body2" align="center">
               {formatPrice}
             </Price>

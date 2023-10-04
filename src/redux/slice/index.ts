@@ -11,34 +11,25 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addComicToCart: (state, action) => {
+      console.log("Akii");
       const comicExistInCart = state.comics.some(
         (comic) => comic.id === action.payload.id
       );
-      state.cartQuantity = state.cartQuantity + action.payload.quantity;
+      state.cartQuantity = action.payload.quantity;
+      console.log(action.payload.quantity);
       if (comicExistInCart) {
         state.comics = state.comics.map((comic) =>
           comic.id === action.payload.id
-            ? { ...comic, quantity: comic.quantity + action.payload.quantity }
+            ? { ...comic, quantity: action.payload.quantity }
             : { ...comic }
         );
       } else {
         state.comics = [...state.comics, { ...action.payload }];
       }
     },
-    addQuantityProduct: (state, action) => {
-      if (state.comics.length > 0) {
-        state.comics.find((comic, index) => {
-          if (comic.id === action.payload.id) {
-            state.comics[index].quantity = action.payload.quantity;
-          }
-        });
-      } else {
-        state.comics = [...initialState.comics, { ...action.payload }];
-      }
-    },
   },
 });
 
-export const { addComicToCart, addQuantityProduct } = cartSlice.actions;
+export const { addComicToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

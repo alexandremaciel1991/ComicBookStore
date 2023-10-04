@@ -40,11 +40,11 @@ export const CardDetails = ({ id, title, price, thumbnail }: ICardDetails) => {
     <CardContainer>
       <ProductDetails onClick={handleClick}>
         <ProductImage>
-          <Image src={thumbnail} alt="capa" fill />
+          <Image src={thumbnail} alt="capa" width={124} height={190} />
         </ProductImage>
         {!matches && (
           <TitleContent>
-            <Text variant="body2" align="center">
+            <Text variant="body2" align="left">
               {title}
             </Text>
           </TitleContent>
@@ -53,7 +53,7 @@ export const CardDetails = ({ id, title, price, thumbnail }: ICardDetails) => {
       <CardAction>
         {matches && (
           <TitleContent onClick={handleClick}>
-            <Text variant="body2" align="center">
+            <Text variant="body2" align="left">
               {title}
             </Text>
           </TitleContent>
@@ -61,12 +61,6 @@ export const CardDetails = ({ id, title, price, thumbnail }: ICardDetails) => {
         <Price variant="body2" align="center">
           {formatPrice}
         </Price>
-        <CardActionButtonGroup>
-          <Button href={`/produto?id=${id}`}>Detalhes</Button>
-          <BuyButton onClick={shoppingComic}>
-            <LocalMallOutlinedIcon fontSize="large" />
-          </BuyButton>
-        </CardActionButtonGroup>
       </CardAction>
     </CardContainer>
   );

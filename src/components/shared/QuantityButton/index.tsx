@@ -1,4 +1,3 @@
-import { addQuantityProduct } from "@/redux/slice";
 import { ButtonController, ButtonGroupStyle, InputController } from "./styles";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -8,32 +7,35 @@ import { ComicTypesCart } from "@/types/CartType";
 
 interface IQuantityButton {
   id: number;
+  setProductQuantity?(value: number): void;
 }
-export const QuantityButton = ({ id }: IQuantityButton) => {
+export const QuantityButton = ({ id, setProductQuantity }: IQuantityButton) => {
   const { comics } = useSelector(
     (rootReducer: any) => rootReducer.comicReducer
   );
   const [count, setCount] = useState<number>(1);
-  const dispatch = useDispatch();
 
   const updateCount = (value: number) => {
-    dispatch(
-      addQuantityProduct({
-        id: id,
-        quantity: value,
-      })
-    );
     setCount(value);
+    if (setProductQuantity) {
+      setProductQuantity(value);
+    }
   };
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    updateCount(Math.max(Number(event.target.value), 1));
-  };
+  // const handleChange = (
+  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   if (!isNaN(Number(event.target.value))) {
+  //     updateCount(Math.max(Number(event.target.value), 1));
+  //   }
+  // };
 
-  const handleClick = () => {
+  const handleClickSum = () => {
     updateCount(count + 1);
+  };
+
+  const handleClickSub = () => {
+    updateCount(count - 1);
   };
 
   useEffect(() => {
@@ -54,14 +56,11 @@ export const QuantityButton = ({ id }: IQuantityButton) => {
 
   return (
     <ButtonGroupStyle>
-      <ButtonController
-        onClick={() => setCount((prev: number) => prev - 1)}
-        disabled={count === 1}
-      >
+      <ButtonController onClick={() => handleClickSub()} disabled={count === 1}>
         <RemoveIcon fontSize="small" />
       </ButtonController>
-      <InputController size="small" onChange={handleChange} value={count} />
-      <ButtonController onClick={() => handleClick()}>
+      <InputController size="small" value={count} disabled />
+      <ButtonController onClick={() => handleClickSum()}>
         <AddIcon fontSize="small" />
       </ButtonController>
     </ButtonGroupStyle>

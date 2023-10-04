@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const CardContainer = styled(Card)`
   width: 270px;
-  padding: 1.5rem;
   border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   margin: 1rem;
   display: flex;
@@ -28,10 +27,11 @@ export const TitleContent = styled(CardContent)`
 `;
 
 export const ProductImage = styled.div`
-  width: 12.4rem;
+  width: 100%;
   height: 19rem;
   position: relative;
-  margin: auto;
+  text-align: center;
+  background-color: #f5f5f5;
 `;
 
 export const Text = styled(Typography)`

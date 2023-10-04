@@ -28,23 +28,7 @@ export const GeneralCollapse = ({ children, title }: IGeneralCollapse) => {
         }
       ></DescriptionHeader>
       <Collapse in={open}>
-        <Description>
-          {children}
-          {/* {Object.entries(creators).map((item) => {
-            return (
-              <Image
-                key={item[0] + item[1].id}
-                src={formatUrlImage(
-                  item[1].thumbnail.extension,
-                  item[1].thumbnail.path
-                )}
-                alt={item[1].firstName}
-                width={103.45}
-                height={150}
-              />
-            );
-          })} */}
-        </Description>
+        <Description>{children}</Description>
       </Collapse>
     </CardContainer>
   );

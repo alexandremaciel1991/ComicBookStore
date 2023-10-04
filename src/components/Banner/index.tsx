@@ -6,7 +6,8 @@ export const Banner = () => {
       <BannerImage
         src="/img/banner.png"
         alt="Banner Marvel Central"
-        fill
+        width={1450}
+        height={450}
         priority
       />
     </BannerContainer>
