@@ -1,8 +1,5 @@
 import {
-  Button,
-  BuyButton,
   CardAction,
-  CardActionButtonGroup,
   CardContainer,
   Price,
   ProductDetails,
@@ -13,9 +10,6 @@ import {
 import Image from "next/image";
 import { useFormatPrice } from "@/hooks/useFormatPrice";
 import { useMediaQuery } from "@mui/material";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import { useDispatch } from "react-redux";
-import { addComicToCart } from "@/redux/slice";
 import { useRouter } from "next/router";
 
 export interface ICardDetails {
@@ -26,14 +20,10 @@ export interface ICardDetails {
 }
 export const CardDetails = ({ id, title, price, thumbnail }: ICardDetails) => {
   const formatPrice = useFormatPrice(price);
-  const dispatch = useDispatch();
   const handleClick = () => {
-    window.location.href = `/produto?id=${id}`;
+    router.push(`/produto?id=${id}`);
   };
   const router = useRouter();
-  const shoppingComic = () => {
-    dispatch(addComicToCart({ id, title, price, thumbnail, quantity: 1 }));
-  };
 
   const matches = useMediaQuery("(max-width:900px)");
   return (

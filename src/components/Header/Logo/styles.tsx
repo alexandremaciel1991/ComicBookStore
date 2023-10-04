@@ -18,4 +18,5 @@ export const LogoLink = styled.a`
   position: relative;
   vertical-align: middle;
   z-index: 1;
+  cursor: pointer;
 `;

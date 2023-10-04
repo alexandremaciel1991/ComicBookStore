@@ -8,7 +8,7 @@ import { getComicsList } from "@/services/ListProductCard";
 import { ComicTypes } from "@/types/ComicType";
 import { useMediaQuery } from "@mui/material";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IHOME {
   total: number;
@@ -17,20 +17,15 @@ interface IHOME {
   count: number;
   limit: number;
   page: number;
-  loadingStatus: boolean;
 }
 
-export default function Home({
-  results,
-  total,
-  offset,
-  count,
-  page,
-  loadingStatus = false,
-}: IHOME) {
+export default function Home({ results, total, offset, count, page }: IHOME) {
   const breadcrumbs = ["Home"];
-  const [loading, setLoading] = useState<boolean>(loadingStatus);
+  const [loading, setLoading] = useState<boolean>(false);
   const matches = useMediaQuery("(max-width:900px)");
+  useEffect(() => {
+    setLoading(false);
+  }, [page, results]);
   return (
     <>
       <TopAppBar /> {!matches && <Banner />}
@@ -68,9 +63,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       : 1;
     const offset = (page - 1) * 20;
     const data = await getComicsList(offset);
-    const loadingStatus = false;
 
-    return { props: { ...data, page: page, loadingStatus: loadingStatus } };
+    return { props: { ...data, page: page } };
   } catch (error) {
     return {
       redirect: {

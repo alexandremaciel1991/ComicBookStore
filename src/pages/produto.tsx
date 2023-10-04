@@ -17,7 +17,7 @@ export default function Produto({ data, creators }: IProduto) {
   const matches = useMediaQuery("(max-width:900px)");
   return (
     <>
-      <TopAppBar /> {!matches && <Banner />}
+      <TopAppBar />
       <BasicBreadcrumbs breadcrumbs={breadcrumbs} />
       <Product product={data} creators={creators} />
     </>

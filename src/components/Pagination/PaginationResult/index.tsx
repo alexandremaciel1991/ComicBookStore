@@ -23,6 +23,7 @@ export const PaginationResult = ({
   setLoading,
 }: IPaginationResult) => {
   const matches = useMediaQuery("(max-width:900px)");
+
   return (
     <SearchResultContainer $showItens={showTotalItens}>
       {(!matches || !showTotalItens) && (

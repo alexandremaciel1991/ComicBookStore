@@ -2,7 +2,7 @@ import { AppBar, Box, InputBase, Toolbar } from "@mui/material";
 import styled from "styled-components";
 
 export const BoxStyle = styled(Box)`
-  height: 9.5rem;
+  height: 10.5rem;
   ${({ theme }) => theme.breakpoints.down("md")} {
     height: 15rem;
   }

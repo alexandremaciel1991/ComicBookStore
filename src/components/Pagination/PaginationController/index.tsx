@@ -1,4 +1,5 @@
 import { Pagination, PaginationProps } from "@mui/material";
+import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
 type IPagination = {
@@ -16,11 +17,11 @@ export const PaginationControlled = ({
   setLoading,
   ...rest
 }: IPagination) => {
+  const router = useRouter();
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setLoading(true);
-    window.location.href = `?page=${value}`;
+    router.push(`?page=${value}`);
   };
-
   const totalPage = Math.floor(totalItens / count);
   return (
     <Pagination
